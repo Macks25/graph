@@ -33,5 +33,7 @@ public class NewClass {
         
         System.out.println("Paul: "+ greundesGraph.getGrad(paul));
         
+        System.out.println("kleinster Grad: "+ greundesGraph.minimalgrad());
+        
     }
 }

@@ -312,26 +312,37 @@ public class Graph{
   } 
   
   public int getGrad(Vertex gesucht){
+      
       int i = 0;
-      
-      
       List<Edge> result = this.getEdges();
-      
       result.toFirst();
       
       while(result.hasAccess()){
-          
           Vertex[] ve = result.getContent().getVertices();
           
           if(ve[0].equals(gesucht) || ve[1].equals(gesucht)){
               i++;
           }
-          
           result.next();
       }
+      return i;
+  }
+  
+  public int minimalgrad(){
+      int i = 0;
+      boolean first = true;
+      List<Vertex> Vertices = this.getVertices();
+      Vertices.toFirst();
       
-      
-      
+      while(Vertices.hasAccess()){
+          
+          int k = this.getGrad(Vertices.getContent());
+          if(k<i || first){
+              i = k;
+              first=false;
+          }
+          Vertices.next();
+      }
       return i;
   }
 
