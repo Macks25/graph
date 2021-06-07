@@ -31,6 +31,7 @@ public class NewClass {
         greundesGraph.addEdge(e2);
         greundesGraph.addEdge(e3);
         
+        System.out.println("Paul: "+ greundesGraph.getGrad(paul));
         
     }
 }

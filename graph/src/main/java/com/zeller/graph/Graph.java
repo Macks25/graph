@@ -310,5 +310,29 @@ public class Graph{
   public boolean isEmpty(){
     return vertices.isEmpty();
   } 
+  
+  public int getGrad(Vertex gesucht){
+      int i = 0;
+      
+      
+      List<Edge> result = this.getEdges();
+      
+      result.toFirst();
+      
+      while(result.hasAccess()){
+          
+          Vertex[] ve = result.getContent().getVertices();
+          
+          if(ve[0].equals(gesucht) || ve[1].equals(gesucht)){
+              i++;
+          }
+          
+          result.next();
+      }
+      
+      
+      
+      return i;
+  }
 
 }
