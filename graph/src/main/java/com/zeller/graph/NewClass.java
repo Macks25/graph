@@ -22,6 +22,8 @@ public class NewClass {
         greundesGraph.addVertex(franz);
         Vertex paul = new Vertex("paul");
         greundesGraph.addVertex(paul);
+        Vertex peter = new Vertex("peter");
+        greundesGraph.addVertex(peter);
         
         Edge e1 = new Edge(paul, otto, 1);
         Edge e2 = new Edge(tom, franz, 1);
@@ -36,7 +38,14 @@ public class NewClass {
         System.out.println("kleinster Grad: "+ greundesGraph.minimalgrad());
         
         List<Vertex> result = new List<Vertex>();
-        greundesGraph.fastestrout(otto, franz, result);
+        List<Vertex> res = new List<Vertex>();
+        res = greundesGraph.fastestrout(otto, otto, result);
+     
+        res.toFirst();
         
+        while(res.hasAccess()){
+            System.out.println(res.getContent().getID());
+            res.next();
+        }
     }
 }

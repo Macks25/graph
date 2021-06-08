@@ -346,31 +346,33 @@ public class Graph{
       return i;
   }
   
-  public void fastestrout(Vertex from, Vertex to, List<Vertex> list){
-      list.append(from);
-      from.setMark(true);
-      List<Vertex> neighbours = this.getNeighbours(from);
-      neighbours.toFirst();
-      while(neighbours.hasAccess()){
-          if(neighbours.getContent().equals(to)){
-              list.append(to);
-              list.toFirst();
+    public List<Vertex> fastestrout(Vertex from, Vertex to, List<Vertex> list) {
+        list.append(from);
+        from.setMark(true);
+        List<Vertex> neighbours = this.getNeighbours(from);
+        neighbours.toFirst();
+        while (neighbours.hasAccess()) {
+
+            if (!neighbours.getContent().isMarked()) {
+                if (neighbours.getContent().equals(to)) {
+                    list.append(to);
+                    /*list.toFirst();
               System.out.println("-----");
               while(list.hasAccess()){
                   System.out.println(list.getContent().getID());
                   list.next();
-              }
-              
-          }else{
-              if(!neighbours.getContent().isMarked()){
-                  
-                  
-                  fastestrout(neighbours.getContent(), to, list);
-                  
-              }
-          }
-          neighbours.next();
-      }
-  }
+              }*/
+                    return list;
+                }
+
+                return fastestrout(neighbours.getContent(), to, list);
+
+            }
+
+            neighbours.next();
+        }
+        List<Vertex> nocon = new List<Vertex>();
+        return nocon;
+    }
 
 }
