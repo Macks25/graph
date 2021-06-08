@@ -35,5 +35,8 @@ public class NewClass {
         
         System.out.println("kleinster Grad: "+ greundesGraph.minimalgrad());
         
+        List<Vertex> result = new List<Vertex>();
+        greundesGraph.fastestrout(otto, franz, result);
+        
     }
 }
