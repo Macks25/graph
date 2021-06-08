@@ -28,24 +28,33 @@ public class NewClass {
         Edge e1 = new Edge(paul, otto, 1);
         Edge e2 = new Edge(tom, franz, 1);
         Edge e3 = new Edge(franz, paul, 1);
+        Edge e4 = new Edge(paul, tom, 1);
         
         greundesGraph.addEdge(e1);
         greundesGraph.addEdge(e2);
         greundesGraph.addEdge(e3);
+        greundesGraph.addEdge(e4);
         
         System.out.println("Paul: "+ greundesGraph.getGrad(paul));
         
         System.out.println("kleinster Grad: "+ greundesGraph.minimalgrad());
         
-        List<Vertex> result = new List<Vertex>();
         List<Vertex> res = new List<Vertex>();
-        res = greundesGraph.fastestrout(otto, otto, result);
+        List<List<Vertex>> resli = new List<List<Vertex>>();
+        greundesGraph.fastestrout(otto, tom, res, resli);
      
-        res.toFirst();
+        resli.toFirst();
         
-        while(res.hasAccess()){
-            System.out.println(res.getContent().getID());
-            res.next();
+        while(resli.hasAccess()){
+            System.out.println("----");
+            List<Vertex> l1 = resli.getContent();
+            
+            l1.toFirst();
+            while(l1.hasAccess()){
+                System.out.println(l1.getContent().getID());
+                l1.next();
+            }
+            resli.next();
         }
     }
 }
