@@ -39,7 +39,7 @@ public class NewClass {
         
         System.out.println("kleinster Grad: "+ greundesGraph.minimalgrad());
         
-        List<Vertex> res = new List<Vertex>();
+        /*List<Vertex> res = new List<Vertex>();
         res = greundesGraph.fastestrout(otto, tom, res);
      
         res.toFirst();
@@ -48,5 +48,9 @@ public class NewClass {
             System.out.println(res.getContent().getID());
             res.next();
         }
+        */
+        
+        List<Vertex> kk = new List<Vertex>();
+        greundesGraph.fastestroutg1(otto, tom, kk, 0);
     }
 }

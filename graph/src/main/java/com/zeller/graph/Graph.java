@@ -369,5 +369,71 @@ public class Graph{
         List<Vertex> nocon = new List<Vertex>();
         return nocon;
     }
+    
+    
+    
+    public void fastestroutg1(Vertex from, Vertex to, List<Vertex> path, int ebene/*, List<List<Vertex>> result*/){
+        //System.out.println("com.zeller.graph.Graph.fastestroutg1()");
+         path.toFirst();
+                System.out.println("!!!!"+" | " +from.getID());
+                while(path.hasAccess()){
+                    System.out.println(path.getContent().getID());
+                    path.next();
+                }
+                
+                System.out.println("!!!!");
+        path.append(from);
+        List<Vertex> neighbours = this.getNeighbours(from);
+        neighbours.toFirst();
+        
+        while(neighbours.hasAccess()){
+            System.out.println("Pruefe: "+from.getID() + " -> " + neighbours.getContent().getID()+" | " +ebene);
+            
+            if(neighbours.getContent().equals(to)){
+                path.append(neighbours.getContent());
+                path.toFirst();
+                System.out.println("---- "+" | " +ebene);
+                while(path.hasAccess()){
+                    System.out.println(path.getContent().getID());
+                    path.next();
+                }
+                
+                System.out.println("----");
+                break;
+            }else if(!contains(path, neighbours.getContent())){
+                System.out.println("in recursion");
+                System.out.println("-> " + neighbours.getContent().getID()+" | " +ebene);
+                
+                path.toFirst();
+                System.out.println("????"+" | " +ebene);
+                while(path.hasAccess()){
+                    System.out.println(path.getContent().getID());
+                    path.next();
+                }
+                
+                System.out.println("????");
+                fastestroutg1(neighbours.getContent(), to, path, ebene+1);
+            }
+            neighbours.next();
+        }
+        
+        
+    }
+    
+    
+    public boolean contains(List<Vertex> list, Vertex vertex){
+        list.toFirst();
+        
+        while(list.hasAccess()){
+            
+            if(list.getContent().equals(vertex)){
+               // System.out.println("true");
+                return true;
+            }
+            list.next();
+        }
+        //System.out.println("false");
+        return false;
+    }
 
 }
