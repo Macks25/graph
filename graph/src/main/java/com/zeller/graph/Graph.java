@@ -346,7 +346,7 @@ public class Graph{
       return i;
   }
   
-    public void fastestrout(Vertex from, Vertex to, List<Vertex> list, List<List<Vertex>> resli) {
+    public List<Vertex> fastestrout(Vertex from, Vertex to, List<Vertex> list) {
         list.append(from);
         from.setMark(true);
         List<Vertex> neighbours = this.getNeighbours(from);
@@ -356,17 +356,18 @@ public class Graph{
             if (!neighbours.getContent().isMarked()) {
                 if (neighbours.getContent().equals(to)) {
                     list.append(to);
-                    resli.append(list);
-                    
+
+                    return list;
                 }
 
-                 fastestrout(neighbours.getContent(), to, list,resli);
+                return fastestrout(neighbours.getContent(), to, list);
 
             }
 
             neighbours.next();
         }
-        
+        List<Vertex> nocon = new List<Vertex>();
+        return nocon;
     }
 
 }
